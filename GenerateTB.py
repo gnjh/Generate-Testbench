@@ -27,7 +27,7 @@ def PrintTestScenario():
     print("1. Random Testing"                    )
     print("2. Ascending Exhaustive Testing"      )
     print("3. Descending Exhaustive Testing"     )
-    print()
+    print(" ")
 
 # removing the comments in the modules of the verilog file 
 def removeComments(textInput):
@@ -82,6 +82,10 @@ if sys.platform.startswith('linux'):
             verilogFile = open(verilogFilename)
             print("Opening file: " + verilogFilename)
             moduleContents = verilogFile.read()
+            print("Reading contents of the file:")
+            print("=========================================")
+            print(moduleContents)
+            print("=========================================")
             print("Reading Contents of the file - Completed!")
 
             # the output file would now be free from any comments
@@ -110,10 +114,22 @@ if sys.platform.startswith('linux'):
             portList = moduleDeclaration.split('(')[1].strip()[:-1]
             if(portList.startswith("input") or portList.startswith("output") ):
 
+                print("\nRemoving Comments in File:")
+                print("=========================================")
+                print(output_noComments)
+                print("=========================================")
                 print("Removing Comments in File - Completed!")
+
+                print("\nExtracting Module Name:")
+                print("=========================================")
+                print("Module name: " + moduleDeclaration)
+                print("=========================================")
                 print("Extracting Module Name - Completed!")
+
                 print("\nCreating output file .....")
                 print("Writing testbench blocks .....")
+                print("\nExtracting the declared ports:")
+                print("=========================================")
 
                 # Removing the comma and replacing it with ' '
                 for newPortList in portList:
@@ -174,6 +190,23 @@ if sys.platform.startswith('linux'):
                         flipped[value].append(key)                    
 
             else:
+                print("\nRemoving Comments in File:")
+                print("=========================================")
+                print(output_noComments)
+                print("=========================================")
+                print("Removing Comments in File - Completed!")
+
+                print("\nExtracting Module Name:")
+                print("=========================================")
+                print("Module name: " + moduleDeclaration)
+                print("=========================================")
+                print("Extracting Module Name - Completed!")
+
+                print("\nCreating output file .....")
+                print("Writing testbench blocks .....")
+                print("\nExtracting the declared ports:")
+                print("=========================================")
+                
                 inputVariables = []
                 outputVariables = []
                 portList = []
@@ -252,7 +285,9 @@ if sys.platform.startswith('linux'):
                         flipped[value].append(key)
                         
             # writing the combinational logic
-            print("Writing of Combinational Logic .....")
+            print("=========================================")
+            print("Extracting declared port - Completed!")
+            print("\nWriting of Combinational Logic .....")
             print("Determine of Test Cases to be used .....")
             
             new_file.write("\n\ninitial")
@@ -280,7 +315,7 @@ if sys.platform.startswith('linux'):
                 bit_width = 0
                 assignVariable = []
                 if inputValue == 1:
-                    print("You have selected: Random Testing\n")
+                    print("\nYou have selected: Random Testing")
                     for x in flipped.keys():
                         assignVariable.append(', '.join(map(str, flipped[x])))
                         bit_width += x
@@ -295,7 +330,7 @@ if sys.platform.startswith('linux'):
                         new_file.write("\n\t#" + str(time) + " {" + assignVariable + "} = " + str(bit_width) + "'" + str(binaryValue)[1:] + ";")         
                         
                 elif inputValue == 2:
-                    print("You have selected: Ascending Exhaustive Testing\n")
+                    print("\nYou have selected: Ascending Exhaustive Testing")
                     print("Exhaustive Testing from 0 to N.......")
                     for x in flipped.keys():
                         assignVariable.append(', '.join(map(str, flipped[x])))
@@ -328,7 +363,7 @@ if sys.platform.startswith('linux'):
                             new_file.write("\n\t#" + str(time) + " {" + assignVariable + "} = " + str(bit_width) + "'" + str(binaryValue)[1:] + ";")         
 
                 elif inputValue == 3:
-                    print("You have selected: Descending Exhaustive Testing\n")
+                    print("\nYou have selected: Descending Exhaustive Testing")
                     print("Exhaustive Testing from 0 to N.......")
                     for x in flipped.keys():
                         assignVariable.append(', '.join(map(str, flipped[x])))
@@ -364,7 +399,7 @@ if sys.platform.startswith('linux'):
             new_file.write("\nend")
             new_file.write("\n\n" + module_name + " " + module_name[0] + " (" + ','.join(map(str, listofVariables)) + ");")
             new_file.write("\n\nendmodule")
-            print("Writing of Combinational Logic - Completed!")                
+            print("\nWriting of Combinational Logic - Completed!")                
 
             # ending the writing task once completed
             new_file.close()
@@ -415,6 +450,10 @@ if sys.platform.startswith('win'):
             verilogFile = open(verilogFilename)
             print("Opening file: " + verilogFilename)
             moduleContents = verilogFile.read()
+            print("Reading contents of the file:")
+            print("=========================================")
+            print(moduleContents)
+            print("=========================================")
             print("Reading Contents of the file - Completed!")
             
             # the output file would now be free from any comments
@@ -443,10 +482,22 @@ if sys.platform.startswith('win'):
             portList = moduleDeclaration.split('(')[1].strip()[:-1]
             if(portList.startswith("input") or portList.startswith("output") ):
 
+                print("\nRemoving Comments in File:")
+                print("=========================================")
+                print(output_noComments)
+                print("=========================================")
                 print("Removing Comments in File - Completed!")
+
+                print("\nExtracting Module Name:")
+                print("=========================================")
+                print("Module name: " + moduleDeclaration)
+                print("=========================================")
                 print("Extracting Module Name - Completed!")
+
                 print("\nCreating output file .....")
                 print("Writing testbench blocks .....")
+                print("\nExtracting the declared ports:")
+                print("=========================================")
 
                 # Removing the comma and replacing it with ' '
                 for newPortList in portList:
@@ -507,6 +558,23 @@ if sys.platform.startswith('win'):
                         flipped[value].append(key)                    
 
             else:
+                print("\nRemoving Comments in File:")
+                print("=========================================")
+                print(output_noComments)
+                print("=========================================")
+                print("Removing Comments in File - Completed!")
+
+                print("\nExtracting Module Name:")
+                print("=========================================")
+                print("Module name: " + moduleDeclaration)
+                print("=========================================")
+                print("Extracting Module Name - Completed!")
+
+                print("\nCreating output file .....")
+                print("Writing testbench blocks .....")
+                print("\nExtracting the declared ports:")
+                print("=========================================")
+                
                 inputVariables = []
                 outputVariables = []
                 portList = []
@@ -586,9 +654,12 @@ if sys.platform.startswith('win'):
                         flipped[value].append(key)
                         
             # writing the combinational logic
-            print("Writing of Combinational Logic .....")
+            print("=========================================")
+            print("Extracting declared port - Completed!")
+            print("\nWriting of Combinational Logic .....")
             print("Determine of Test Cases to be used .....")
-            
+
+            # writing to the output file
             new_file.write("\n\ninitial")
             new_file.write("\nbegin")
             new_file.write("\n\t$dumpfile(\"" + module_name + "_tb.dump" + "\"" + ");")
@@ -614,7 +685,7 @@ if sys.platform.startswith('win'):
                 bit_width = 0
                 assignVariable = []
                 if inputValue == 1:
-                    print("You have selected: Random Testing\n")
+                    print("\nYou have selected: Random Testing")
                     for x in flipped.keys():
                         assignVariable.append(', '.join(map(str, flipped[x])))
                         bit_width += x
@@ -629,7 +700,7 @@ if sys.platform.startswith('win'):
                         new_file.write("\n\t#" + str(time) + " {" + assignVariable + "} = " + str(bit_width) + "'" + str(binaryValue)[1:] + ";")         
                         
                 elif inputValue == 2:
-                    print("You have selected: Ascending Exhaustive Testing\n")
+                    print("\nYou have selected: Ascending Exhaustive Testing")
                     print("Exhaustive Testing from 0 to N.......")
                     for x in flipped.keys():
                         assignVariable.append(', '.join(map(str, flipped[x])))
@@ -662,7 +733,7 @@ if sys.platform.startswith('win'):
                             new_file.write("\n\t#" + str(time) + " {" + assignVariable + "} = " + str(bit_width) + "'" + str(binaryValue)[1:] + ";")         
 
                 elif inputValue == 3:
-                    print("You have selected: Descending Exhaustive Testing\n")
+                    print("\nYou have selected: Descending Exhaustive Testing")
                     print("Exhaustive Testing from 0 to N.......")
                     for x in flipped.keys():
                         assignVariable.append(', '.join(map(str, flipped[x])))
@@ -698,7 +769,7 @@ if sys.platform.startswith('win'):
             new_file.write("\nend")
             new_file.write("\n\n" + module_name + " " + module_name[0] + " (" + ','.join(map(str, listofVariables)) + ");")
             new_file.write("\n\nendmodule")
-            print("Writing of Combinational Logic - Completed!")
+            print("\nWriting of Combinational Logic - Completed!")
 
             # ending the writing task once completed
             new_file.close()

@@ -7,5 +7,5 @@ The written python script can only understand two different types of module decl
 1. One with the directions and widths within the brackets
 2. One with only the ports declared within the brackets 
 
-Tested on 22/03/2015
+Last updated on 29/04/2015
 
